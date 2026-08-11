@@ -1,12 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desenvolvimento Web</title>
+    <title>Gerenciador de Tarefas Acadêmicas</title>
 </head>
 <body>
-    <h2>Reginaldo Santos Andrade</h2>
-    <p>Estudante de Desenvolvimento web</p>
+    <header>
+        <h1>Gerenciador de Tarefas Acadêmicas</h1>
+    </header>
+<main>
+    <section aria-labelledby="titulo-filtros">
+        <h2 id="titulo-filtros">Busca e Filtros</h2>
+
+        <form>
+            <label>
+                Buscar tarefa por título:
+                <input type="search" name="busca">
+            </label>
+            
+            <fieldset>
+                <legend>Filtrar quadro</legend>
+                <label>
+                    Status:
+                    <select name="status">
+                        <option value="todos">Todos</option>
+                        <option value="a-fazer">A Fazer</option>
+                        <option value="em-andamento">Em Andamento</option>
+                        <option value="em-revisao">Em Revisão</option>
+                        <option value="concluida">Concluída</option>
+                    </select>
+                </label>
+                
+                <label>
+                    Prioridade:
+                    <select name="prioridade">
+                        <option value="todas">Todas</option>
+                        <option value="baixa">Baixa</option>
+                        <option value="media">Média</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                </label>                
+
+                <button type="submit">Filtrar</button>
+            </fieldset>
+        </form>
+    </section>   
+</main>    
 </body>
 </html>
