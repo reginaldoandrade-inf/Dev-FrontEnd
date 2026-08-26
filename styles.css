@@ -69,3 +69,95 @@ header h1 {
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
+section[aria-labelledby="titulo-filtros"] {
+  background: linear-gradient(180deg, #ffffff 0%, #f3f0ff 100%);
+  padding: var(--espaco-md);
+  border-radius: var(--raio-coluna);
+  box-shadow: 0 12px 28px rgba(107, 92, 165, 0.15);
+  border: 3px solid var(--header-a-fazer);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-md);
+  height: fit-content;
+  width: 100%;
+}
+
+section[aria-labelledby="titulo-filtros"] h2 {
+  color: #ffffff;
+  background-color: var(--header-a-fazer);
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  font-family: "Impact", "Oswald", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.15);
+  transform: rotate(-1.5deg);
+}
+
+form, fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-md);
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+
+fieldset legend {
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--header-a-fazer);
+  font-size: 0.85rem;
+}
+
+
+input[type="search"], 
+select, 
+button[type="submit"] {
+  min-height: 48px;
+  padding: 0 var(--espaco-sm);
+  border-radius: 12px;
+  font-weight: 700;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+select#prioridade {
+  background-color: #fdf2f8;
+  border: 2px solid var(--header-em-progresso);
+  color: #9d174d;
+}
+
+input#buscaTarefa {
+  background-color: #f0f9ff;
+  border: 2px solid var(--header-feedback);
+  color: #0369a1;
+}
+
+select#status {
+  background-color: #f0fdf4;
+  border: 2px solid var(--header-concluido);
+  color: #065f46;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, var(--header-em-progresso) 0%, var(--header-a-fazer) 100%);
+  color: #ffffff;
+  border: none;
+  font-family: "Impact", "Oswald", sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(107, 92, 165, 0.35);
+}
+
+:focus-visible {
+  outline: 3px solid var(--cor-foco);
+  outline-offset: 2px;
+}
+
+
+
