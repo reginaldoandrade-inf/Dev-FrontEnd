@@ -1,3 +1,4 @@
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -5,13 +6,13 @@
   padding: 0;
 }
 
-:root {  
-  --header-a-fazer: #6b5ca5;      
-  --header-em-progresso: #f69cb7; 
-  --header-feedback: #3ec3f0;     
-  --header-concluido: #3dc3a0;    
+:root {
+  --header-a-fazer: #6b5ca5;
+  --header-em-progresso: #f69cb7;
+  --header-feedback: #3ec3f0;
+  --header-concluido: #3dc3a0;
 
-   --postit-amarelo: #ffea75;
+  --postit-amarelo: #ffea75;
   --postit-verde: #a8ed93;
   --postit-rosa: #ff7e93;
   --postit-ondulacao: #e53e3e;
@@ -22,22 +23,24 @@
   --cor-texto-mutado: #475569;
   --cor-foco: #6b5ca5;
 
-  --espaco-xs: 0.25rem; 
-  --espaco-sm: 0.5rem;  
-  --espaco-md: 1rem;   
-  --espaco-lg: 1.5rem; 
+  --espaco-xs: 0.25rem;
+  --espaco-sm: 0.5rem;
+  --espaco-md: 1rem;
+  --espaco-lg: 1.5rem;
 
-  
   --raio-coluna: 20px;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--cor-fundo);
   color: #1e293b;
   line-height: 1.4;
   padding: var(--espaco-md);
-  overflow-x: hidden; 
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 main {
@@ -61,12 +64,13 @@ header {
 }
 
 header h1 {
-  font-family: "Impact", "Oswald", "Arial Black", sans-serif;
-  font-size: clamp(1.5rem, 3.5vw + 0.5rem, 2.5rem); 
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 3.5vw + 0.5rem, 2.6rem);
   text-transform: uppercase;
   color: #ffffff;
-  letter-spacing: 0.05em;
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 section[aria-labelledby="titulo-filtros"] {
@@ -89,12 +93,15 @@ section[aria-labelledby="titulo-filtros"] h2 {
   align-self: flex-start;
   padding: 0.4rem 1rem;
   border-radius: 12px;
-  font-family: "Impact", "Oswald", sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
   font-size: 1.1rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.15);
-  transform: rotate(-1.5deg);
+  transform: rotate(-1.5deg) translateZ(0);
+  backface-visibility: hidden;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 form, fieldset {
@@ -112,7 +119,6 @@ fieldset legend {
   color: var(--header-a-fazer);
   font-size: 0.85rem;
 }
-
 
 input[type="search"], 
 select, 
@@ -147,9 +153,12 @@ button[type="submit"] {
   background: linear-gradient(135deg, var(--header-em-progresso) 0%, var(--header-a-fazer) 100%);
   color: #ffffff;
   border: none;
-  font-family: "Impact", "Oswald", sans-serif;
-  font-size: 1.1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(107, 92, 165, 0.35);
 }
@@ -161,7 +170,7 @@ button[type="submit"] {
 
 section[aria-labelledby="titulo-quadro"] {
   display: grid;
-  grid-template-columns: minmax(0, 1fr); 
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--espaco-md);
   padding: 0;
   background: none;
@@ -176,24 +185,27 @@ section[aria-labelledby="titulo-quadro"] > h2 {
 section[aria-labelledby^="status-"] {
   background-color: var(--cor-card-coluna);
   border-radius: var(--raio-coluna);
-  padding: var(--espaco-xs);
+  padding: var(--espaco-sm);
   display: flex;
   flex-direction: column;
   gap: var(--espaco-sm);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
   min-height: 480px;
-  min-width: 0; 
+  min-width: 0;
 }
 
 section[aria-labelledby^="status-"] h3 {
   padding: 0.6rem var(--espaco-xs);
   border-radius: 16px 16px 10px 10px;
   color: #ffffff;
-  font-family: "Impact", "Oswald", "Arial Black", sans-serif;
-  font-size: clamp(0.9rem, 1vw + 0.5rem, 1.15rem); 
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
+  font-size: clamp(0.95rem, 1vw + 0.5rem, 1.15rem);
   text-align: center;
   text-transform: uppercase;
-  word-break: break-word; 
+  letter-spacing: 0.02em;
+  word-break: break-word;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 section[aria-labelledby="status-a-fazer"] h3 { background-color: var(--header-a-fazer); }
@@ -213,18 +225,21 @@ ul {
 
 article {
   background-color: var(--postit-amarelo);
-  padding: var(--espaco-md) var(--espaco-sm);
+  padding: var(--espaco-sm) var(--espaco-sm);
   border-radius: 2px 2px 14px 2px;
   box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.1);
-  
   display: flex;
   flex-direction: column;
   gap: var(--espaco-xs);
   position: relative;
-  min-height: 130px;
-  min-width: 0; 
+  min-height: 110px;
+  min-width: 0;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: grab;
+  
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 article::after {
@@ -239,29 +254,30 @@ article::after {
   z-index: -1;
 }
 
-li:nth-child(odd) article { transform: rotate(-2deg); }
-li:nth-child(even) article { transform: rotate(2deg); }
+li:nth-child(odd) article { transform: rotate(-2deg) translateZ(0); }
+li:nth-child(even) article { transform: rotate(2deg) translateZ(0); }
 
 article:hover {
-  transform: rotate(0deg) scale(1.03) translateY(-3px);
+  transform: rotate(0deg) scale(1.03) translateY(-3px) translateZ(0);
   box-shadow: 5px 12px 18px rgba(0, 0, 0, 0.15);
   z-index: 10;
 }
 
 article h4 {
-  font-family: "Impact", "Oswald", "Arial Black", sans-serif;
-  font-size: 1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
   text-transform: uppercase;
   color: var(--cor-texto-postit);
   letter-spacing: 0.02em;
   text-decoration: underline wavy var(--postit-ondulacao) 2px;
   text-underline-offset: 4px;
   flex-grow: 1;
-  
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
+  transform: translateZ(0);
 }
 
 article span, article .prioridade {
@@ -272,11 +288,11 @@ article span, article .prioridade {
 }
 
 article time, article .prazo {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: #333333;
   font-size: 0.75rem;
   font-weight: 600;
-  margin-top: auto; 
+  margin-top: auto;
 }
 
 article.postit-verde { background-color: var(--postit-verde); }
@@ -285,30 +301,56 @@ article.postit-rosa { background-color: var(--postit-rosa); }
 footer {
   grid-column: 1 / -1;
   text-align: center;
-  padding: var(--espaco-lg);
+  padding: var(--espaco-lg) 0 var(--espaco-md) 0;
+  margin-top: var(--espaco-lg);
+  border-top: 1px solid #cbd5e1;
   color: var(--cor-texto-mutado);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
+footer p {
+  margin: 0;
+}
+
+footer strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   JUSTIFICATIVA BREAKPOINT 640px:
+   Em telas mobile com largura inferior a 640px, a exibição de 4 colunas empilhadas
+   em apenas 1 coluna gera uma rolagem vertical excessivamente longa.
+   A partir de 640px, a largura do viewport permite dividir o quadro Kanban em 2 colunas
+   paralelas, aproveitando melhor o espaço horizontal sem comprimir o texto dos cartões.
+   -------------------------------------------------------------------------- */
 @media (min-width: 640px) {
   section[aria-labelledby="titulo-quadro"] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* --------------------------------------------------------------------------
+   JUSTIFICATIVA BREAKPOINT 1024px:
+   Em monitores grandes (>=1024px), o painel de filtros posicionado no topo consome
+   altura útil de tela e deixa as laterais do layout vazias. Além disso, manter apenas
+   2 colunas estica demais as listas de tarefas.
+   A partir de 1024px, a largura total permite mudar o layout principal para 2 colunas
+   no Grid (sidebar de filtros com 260px fixos à esquerda e quadro Kanban à direita)
+   e exibir as 4 colunas de status simultaneamente em paralelo, eliminando a rolagem
+   horizontal via minmax(0, 1fr).
+   -------------------------------------------------------------------------- */
 @media (min-width: 1024px) {
   main {
-    grid-template-columns: 240px minmax(0, 1fr);
-    gap: var(--espaco-md);
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: var(--espaco-lg);
+    align-items: start;
   }
 
   section[aria-labelledby="titulo-quadro"] {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--espaco-xs);
+    gap: var(--espaco-sm);
   }
 }
-
-
-
-
-
-
