@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Tarefas Acadêmicas</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -14,33 +15,31 @@
         <h2 id="titulo-filtros">Busca e Filtros</h2>
 
         <form>
-            <label>
-                Buscar tarefa por título:
-                <input type="search" name="busca">
-            </label>
+            <label for="buscaTarefa">Buscar tarefa por título: </label>
+            <input type="search" id="buscaTarefa" name="buscaTarefa">          
             
             <fieldset>
                 <legend>Filtrar quadro</legend>
-                <label>
+                <label for="status">
                     Status:
-                    <select name="status">
-                        <option value="todos">Todos</option>
-                        <option value="a-fazer">A Fazer</option>
-                        <option value="em-andamento">Em Andamento</option>
-                        <option value="em-revisao">Em Revisão</option>
-                        <option value="concluida">Concluída</option>
-                    </select>
                 </label>
-                
-                <label>
-                    Prioridade:
-                    <select name="prioridade">
-                        <option value="todas">Todas</option>
-                        <option value="baixa">Baixa</option>
-                        <option value="media">Média</option>
-                        <option value="alta">Alta</option>
-                    </select>
-                </label>                
+                <select id="status" name="status">
+                  <option value="todos">Todos</option>
+                  <option value="a-fazer">A Fazer</option>
+                  <option value="em-andamento">Em Andamento</option>
+                  <option value="em-revisao">Em Revisão</option>
+                  <option value="concluida">Concluída</option>
+                </select>
+                                
+                <label for="prioridade">
+                  Prioridade:
+                </label>
+                <select id="prioridade" name="prioridade">
+                  <option value="todas">Todas</option>
+                  <option value="baixa">Baixa</option>
+                  <option value="media">Média</option>
+                  <option value="alta">Alta</option>
+                </select>                               
 
                 <button type="submit">Filtrar</button>
             </fieldset>
