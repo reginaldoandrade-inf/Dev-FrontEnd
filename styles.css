@@ -319,6 +319,20 @@ footer strong {
   font-weight: 600;
 }
 
+
+#regiao-status {
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  color: var(--header-a-fazer);
+  padding: var(--espaco-xs) 0;
+}
+
+#regiao-status:empty {
+  padding: 0;
+  margin: 0;
+}
 /* --------------------------------------------------------------------------
    JUSTIFICATIVA BREAKPOINT 640px:
    Em telas mobile com largura inferior a 640px, a exibição de 4 colunas empilhadas
