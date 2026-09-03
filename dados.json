@@ -1,0 +1,12 @@
+{
+  "tarefas": [
+    { "id": 1, "titulo": "Modelagem do Banco de Dados", "status": "a-fazer", "prioridade": "alta", "prazo": "2026-08-20" },
+    { "id": 2, "titulo": "Revisão Bibliográfica", "status": "a-fazer", "prioridade": "media", "prazo": "2026-08-25" },
+    { "id": 3, "titulo": "Estrutura HTML da Interface", "status": "em-andamento", "prioridade": "alta", "prazo": "2026-08-15" },
+    { "id": 4, "titulo": "Criação do Questionário", "status": "em-andamento", "prioridade": "baixa", "prazo": "2026-08-18" },
+    { "id": 5, "titulo": "Diagrama de Casos de Uso", "status": "em-revisao", "prioridade": "media", "prazo": "2026-08-12" },
+    { "id": 6, "titulo": "Relatório de Experimento Web", "status": "em-revisao", "prioridade": "alta", "prazo": "2026-08-14" },
+    { "id": 7, "titulo": "Escolha do Tema do Projeto", "status": "concluida", "prioridade": "media", "prazo": "2026-08-05" },
+    { "id": 8, "titulo": "Configuração do Repositório Git", "status": "concluida", "prioridade": "baixa", "prazo": "2026-08-08" }
+  ]
+}
