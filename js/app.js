@@ -11,6 +11,43 @@ const estado = {
   erro: null
 };
 
+
+function lerParametrosUrl() {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.has('busca')) estado.busca = params.get('busca');
+  if (params.has('status')) estado.status = params.get('status');
+  if (params.has('prioridade')) estado.prioridade = params.get('prioridade');
+  if (params.has('ordenacao')) estado.ordenacao = params.get('ordenacao');
+}
+
+
+function sincronizarUrlComEstado() {
+  const params = new URLSearchParams();
+
+  if (estado.busca.trim() !== '') params.set('busca', estado.busca);
+  if (estado.status !== 'todos') params.set('status', estado.status);
+  if (estado.prioridade !== 'todas') params.set('prioridade', estado.prioridade);
+  if (estado.ordenacao !== 'prazo-asc') params.set('ordenacao', estado.ordenacao);
+
+  const novaQuery = params.toString();
+  const novaUrl = novaQuery ? `${window.location.pathname}?${novaQuery}` : window.location.pathname;
+
+  window.history.replaceState(null, '', novaUrl);
+}
+
+function sincronizarControlesComEstado() {
+  const inputBusca = document.getElementById('buscaTarefa');
+  const selectStatus = document.getElementById('status');
+  const selectPrioridade = document.getElementById('prioridade');
+  const selectOrdenacao = document.getElementById('ordenacao');
+
+  if (inputBusca) inputBusca.value = estado.busca;
+  if (selectStatus) selectStatus.value = estado.status;
+  if (selectPrioridade) selectPrioridade.value = estado.prioridade;
+  if (selectOrdenacao) selectOrdenacao.value = estado.ordenacao;
+}
+
 function normalizarTexto(texto) {
   return (texto || '')
     .toLowerCase()
@@ -35,7 +72,6 @@ function obterTarefasFiltradas(estadoAtual) {
     resultado = resultado.filter((t) => normalizarTexto(t.prioridade) === prioFiltro);
   }
 
-  
   resultado.sort((a, b) => {
     const dataA = new Date(a.prazo);
     const dataB = new Date(b.prazo);
@@ -47,6 +83,8 @@ function obterTarefasFiltradas(estadoAtual) {
 
 function atualizarInterface() {
   const quadro = document.querySelector('section[aria-labelledby="titulo-quadro"]');
+
+  sincronizarUrlComEstado();
 
   if (estado.carregamento) {
     atualizarStatusAcessivel('Carregando tarefas do servidor...');
@@ -108,17 +146,12 @@ function inicializarEventos() {
   });
 
   btnLimpar?.addEventListener('click', () => {
-    // Restauração do Estado
     estado.busca = '';
     estado.status = 'todos';
     estado.prioridade = 'todas';
     estado.ordenacao = 'prazo-asc';
 
-    if (inputBusca) inputBusca.value = '';
-    if (selectStatus) selectStatus.value = 'todos';
-    if (selectPrioridade) selectPrioridade.value = 'todas';
-    if (selectOrdenacao) selectOrdenacao.value = 'prazo-asc';
-
+    sincronizarControlesComEstado();
     atualizarInterface();
   });
 
@@ -137,6 +170,10 @@ function inicializarEventos() {
 }
 
 async function init() {
+  lerParametrosUrl();
+
+  sincronizarControlesComEstado();
+
   inicializarEventos();
 
   estado.carregamento = true;
@@ -147,7 +184,7 @@ async function init() {
     estado.tarefas = dados;
   } catch (err) {
     if (err.name === 'TypeError') {
-      estado.erro = 'Falha de rede: Não foi possível conectar ao servidor. Verifique a conexão.';
+      estado.erro = 'Falha de rede: Não foi possível conectar ao servidor.';
     } else if (err.name === 'SyntaxError') {
       estado.erro = 'Erro de formato: O arquivo recebido não contém um JSON válido.';
     } else {
