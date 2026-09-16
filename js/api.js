@@ -12,4 +12,4 @@ export async function carregarTarefas() {
   }
 
   return dados.tarefas;
-}dir
+}
