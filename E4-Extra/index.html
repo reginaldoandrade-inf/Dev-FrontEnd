@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Acadêmica - Esteira Kanban Gourmet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Topo Banner Pizzaria Artesanal -->
+    <header class="header-pizzaria">
+        <div class="header-glow"></div>
+        <div class="header-container">
+            <div class="emblema-pizzaria">
+                <span class="icone-forno">🍕</span>
+                <span class="emblema-fogo">🔥</span>
+            </div>
+            
+            <div class="header-titulos">
+                <span class="tag-topo">👨‍🍳 ESTEIRA ARTESANAL DE TAREFAS</span>
+                <h1>PIZZARIA ACADÊMICA</h1>
+                <p class="subtitulo-gourmet">Gestão de Projetos & Fluxo Kanban em Tempo Real</p>
+            </div>
+
+            <div class="header-info-chef">
+                <div class="chef-status">
+                    <span class="dot-online"></span>
+                    <span>Cozinha Ativa</span>
+                </div>
+                <span class="chef-nome">Chef Reginaldo Andrade</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="layout-principal">
+        <!-- PAINEL LATERAL ESQUERDO (FILTROS DO GARÇOM) -->
+        <section aria-labelledby="titulo-filtros" class="painel-garcom"> 
+            <div class="painel-header">
+                <span class="painel-badge">Chef Control</span>
+                <h2 id="titulo-filtros">📋 Busca e Filtros</h2>
+            </div>
+
+            <form id="form-filtros" class="form-garcom">
+                <div class="campo-custom">
+                    <label for="buscaTarefa">🔍 Buscar por título ou pessoa:</label>
+                    <input type="search" id="buscaTarefa" name="buscaTarefa" placeholder="Ex: Banco de Dados, Reginaldo...">
+                </div>
+                
+                <div class="divisor-comanda"></div>
+                
+                <fieldset>
+                    <legend>Filtrar e Ordenar</legend>
+                    
+                    <div class="campo-custom">
+                        <label for="status">📍 Estação da Esteira (Status):</label>
+                        <select id="status" name="status">
+                          <option value="todos">Todas as Estações</option>
+                          <option value="a-fazer">🥣 1. Massa & Base (A Fazer)</option>
+                          <option value="em-andamento">🧀 2. Recheio & Molho (Em Andamento)</option>
+                          <option value="em-revisao">🔥 3. Forno a Lenha (Em Revisão)</option>
+                          <option value="concluida">✨ 4. Pizza Pronta (Concluída)</option>
+                        </select>
+                    </div>
+                                    
+                    <div class="campo-custom">
+                        <label for="prioridade">🌶️ Temperos (Prioridade):</label>
+                        <select id="prioridade" name="prioridade">
+                          <option value="todas">Todas as Prioridades</option>
+                          <option value="baixa">🍃 Suave (Baixa)</option>
+                          <option value="media">⚡ Moderada (Média)</option>
+                          <option value="alta">🌶️ Vulcão! (Alta)</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-custom">
+                        <label for="ordenacao">⏱️ Ordenar por prazo:</label>
+                        <select id="ordenacao" name="ordenacao">
+                          <option value="prazo-asc">📅 Prazo mais próximo</option>
+                          <option value="prazo-desc">📆 Prazo mais distante</option>
+                        </select>
+                    </div>
+
+                    <button type="button" id="btn-limpar-filtros" class="btn-reset">✨ Limpar filtros</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- QUADRO KANBAN / ESTEIRA DE PIZZAS -->
+        <section aria-labelledby="titulo-quadro" class="esteira-kanban">
+          <h2 id="titulo-quadro" class="sr-only">Quadro de Tarefas</h2>
+
+          <div class="estacoes-grid">
+              <!-- Estação 1: A Fazer -->
+              <section aria-labelledby="status-a-fazer" class="estacao-card estacao-massa">
+                <header class="estacao-header">
+                    <div class="estacao-titulo-wrapper">
+                        <div class="icone-badge bg-massa">🥣</div>
+                        <div>
+                            <h3 id="status-a-fazer">Massa & Base</h3>
+                            <span class="estacao-fase">Etapa 01 • A Fazer</span>
+                        </div>
+                    </div>
+                    <div class="contador-placa border-massa">
+                        <span class="contador-num" data-contador="a-fazer">0</span>
+                    </div>
+                </header>
+                <ul data-lista-status="a-fazer" class="lista-pedidos"></ul>
+              </section>
+              
+              <!-- Estação 2: Em Andamento -->
+              <section aria-labelledby="status-em-andamento" class="estacao-card estacao-recheio">
+                <header class="estacao-header">
+                    <div class="estacao-titulo-wrapper">
+                        <div class="icone-badge bg-recheio">🧀</div>
+                        <div>
+                            <h3 id="status-em-andamento">Recheio & Molho</h3>
+                            <span class="estacao-fase">Etapa 02 • Em Andamento</span>
+                        </div>
+                    </div>
+                    <div class="contador-placa border-recheio">
+                        <span class="contador-num" data-contador="em-andamento">0</span>
+                    </div>
+                </header>
+                <ul data-lista-status="em-andamento" class="lista-pedidos"></ul>
+              </section>
+
+              <!-- Estação 3: Em Revisão -->
+              <section aria-labelledby="status-em-revisao" class="estacao-card estacao-forno">
+                <header class="estacao-header">
+                    <div class="estacao-titulo-wrapper">
+                        <div class="icone-badge bg-forno">🔥</div>
+                        <div>
+                            <h3 id="status-em-revisao">Forno a Lenha</h3>
+                            <span class="estacao-fase">Etapa 03 • Em Revisão</span>
+                        </div>
+                    </div>
+                    <div class="contador-placa border-forno">
+                        <span class="contador-num" data-contador="em-revisao">0</span>
+                    </div>
+                </header>
+                <ul data-lista-status="em-revisao" class="lista-pedidos"></ul>
+              </section>
+              
+              <!-- Estação 4: Concluída -->
+              <section aria-labelledby="status-concluida" class="estacao-card estacao-pronta">
+                <header class="estacao-header">
+                    <div class="estacao-titulo-wrapper">
+                        <div class="icone-badge bg-pronta">✨</div>
+                        <div>
+                            <h3 id="status-concluida">Pizza Pronta!</h3>
+                            <span class="estacao-fase">Etapa 04 • Concluída</span>
+                        </div>
+                    </div>
+                    <div class="contador-placa border-pronta">
+                        <span class="contador-num" data-contador="concluida">0</span>
+                    </div>
+                </header>
+                <ul data-lista-status="concluida" class="lista-pedidos"></ul>
+              </section>
+          </div>
+        </section>
+
+        <!-- Região de Status acessível -->
+        <div id="regiao-status" role="status" aria-live="polite"></div>
+    </main>
+
+    <!-- Modal Comanda do Chef -->
+    <div id="modal-detalhes" class="modal-overlay hidden" role="dialog" aria-modal="true">
+        <div class="modal-comanda-card">
+            <button type="button" class="btn-fechar-modal" id="btn-fechar-modal" aria-label="Fechar modal">&times;</button>
+            
+            <div class="comanda-topo">
+                <span class="comanda-numero">FICHA DE PEDIDO #<span id="modal-id-pedido">1</span></span>
+                <h3 id="modal-titulo">Nome da Tarefa</h3>
+                <div class="comanda-badges">
+                    <span id="modal-projeto" class="badge-materia">Projeto</span>
+                    <span id="modal-responsavel" class="badge-materia">Responsável</span>
+                </div>
+            </div>
+
+            <!-- Linha de Progresso da Esteira -->
+            <div class="linha-esteira-progresso">
+                <div class="passo-etapa" data-passo="a-fazer">
+                    <div class="passo-dot">🥣</div>
+                    <span>Massa</span>
+                </div>
+                <div class="trilho-linha"></div>
+                <div class="passo-etapa" data-passo="em-andamento">
+                    <div class="passo-dot">🧀</div>
+                    <span>Recheio</span>
+                </div>
+                <div class="trilho-linha"></div>
+                <div class="passo-etapa" data-passo="em-revisao">
+                    <div class="passo-dot">🔥</div>
+                    <span>Forno</span>
+                </div>
+                <div class="trilho-linha"></div>
+                <div class="passo-etapa" data-passo="concluida">
+                    <div class="passo-dot">✨</div>
+                    <span>Pronta</span>
+                </div>
+            </div>
+
+            <div class="comanda-corpo">
+                <div class="secao-comanda grid-2-col">
+                    <div>
+                        <span class="label-comanda">⏰ Prazo Limite:</span>
+                        <p id="modal-prazo" class="valor-comanda">--/--/----</p>
+                    </div>
+                    <div>
+                        <span class="label-comanda">📍 Estação Atual:</span>
+                        <p id="modal-status-nome" class="valor-comanda">Massa & Base</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comanda-rodape">
+                <button type="button" id="btn-avancar-estacao" class="btn-avancar-esteira">
+                    Avançar para Próxima Estação ➔
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><b>Aluno:</b> Reginaldo Santos Andrade</p>
+        <p>Desenvolvimento Front-End — Pizzaria Acadêmica</p>    
+    </footer>
+
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
